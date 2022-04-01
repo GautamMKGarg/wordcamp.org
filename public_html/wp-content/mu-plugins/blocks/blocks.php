@@ -46,6 +46,7 @@ function load_includes() {
 
 	// Hooks.
 	require_once $hooks_dir . 'latest-posts/controller.php';
+	require_once $hooks_dir . 'query/controller.php';
 }
 
 add_action( 'plugins_loaded', __NAMESPACE__ . '\load_includes' );

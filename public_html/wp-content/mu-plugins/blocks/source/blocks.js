@@ -12,6 +12,7 @@ import './edit.scss'; // Common styles for WordCamp Blocks.
 import { BLOCKS } from './blocks/'; // Trailing slash required to differentiate the folder from the file.
 // This attaches to the hook itself.
 import './hooks/latest-posts';
+import './hooks/query';
 
 /*
  * When a block isn't enabled on the current site, it won't be registered by it's `controller.php`.
