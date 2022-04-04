@@ -3,7 +3,7 @@
  */
 import { __ } from '@wordpress/i18n';
 import { addFilter } from '@wordpress/hooks';
-import { createHigherOrderComponent } from '@wordpress/compose';
+import { createHigherOrderComponent, usePrevious } from '@wordpress/compose';
 import { InspectorControls } from '@wordpress/block-editor';
 import { PanelBody } from '@wordpress/components';
 
@@ -20,13 +20,20 @@ import OrderControl from './order-control';
  */
 const queryFilter = createHigherOrderComponent(
 	( BlockEdit ) => ( props ) => {
-		const { name, isSelected } = props;
+		const { attributes, name, isSelected, setAttributes } = props;
+		const { query = {} } = attributes;
+		const prevPostType = usePrevious( query.postType || '' );
+
 		if ( name !== 'core/query' || ! isSelected ) {
 			return <BlockEdit key="edit" { ...props } />;
 		}
-		const { attributes, setAttributes } = props;
-		const { query } = attributes;
+
 		if ( 'wcb_session' !== query.postType ) {
+			// Reset the orderby if necessary.
+			if ( 'wcb_session' === prevPostType && query.orderBy === 'session_date' ) {
+				setAttributes( { query: { ...query, order: 'desc', orderBy: 'date' } } );
+			}
+
 			return <BlockEdit key="edit" { ...props } />;
 		}
 
