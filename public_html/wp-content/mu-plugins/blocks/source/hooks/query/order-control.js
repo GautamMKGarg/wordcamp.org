@@ -36,6 +36,7 @@ const orderOptions = [
 function OrderControl( { order, orderBy, onChange } ) {
 	return (
 		<SelectControl
+			hideLabelFromVision
 			label={ __( 'Order by', 'wordcamporg' ) }
 			value={ `${ orderBy }/${ order }` }
 			options={ orderOptions }

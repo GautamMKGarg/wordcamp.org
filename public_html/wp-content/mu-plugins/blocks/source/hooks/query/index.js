@@ -44,7 +44,7 @@ const queryFilter = createHigherOrderComponent(
 			<>
 				<BlockEdit key="edit" { ...props } />
 				<InspectorControls>
-					<PanelBody title={ __( 'Settings', 'wordcamporg' ) }>
+					<PanelBody title={ __( 'Order by', 'wordcamporg' ) }>
 						<OrderControl
 							{ ...{ order, orderBy } }
 							onChange={ updateQuery }
