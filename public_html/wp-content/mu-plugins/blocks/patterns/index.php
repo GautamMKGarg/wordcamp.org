@@ -13,6 +13,26 @@ function register_patterns() {
 	// Set up some categories (?).
 	register_block_pattern_category( 'wordcamp', array( 'label' => _x( 'WordCamp', 'Block pattern category', 'wordcamporg' ) ) );
 
+	// Organizers.
+	register_block_pattern(
+		'wordcamp/organizer-grid-centered',
+		array(
+			'title'      => __( 'Organizer grid, centered', 'wordcamporg' ),
+			'blockTypes' => array( 'core/query' ),
+			'categories' => array( 'wordcamp' ),
+			'content'    => get_pattern_content( 'organizer-grid-centered' ),
+		)
+	);
+	register_block_pattern(
+		'wordcamp/organizer-list-bio',
+		array(
+			'title'      => __( 'Organizer list with bio', 'wordcamporg' ),
+			'blockTypes' => array( 'core/query' ),
+			'categories' => array( 'wordcamp' ),
+			'content'    => get_pattern_content( 'organizer-list-bio' ),
+		)
+	);
+
 	// Sessions.
 	register_block_pattern(
 		'wordcamp/session-list-basic',
